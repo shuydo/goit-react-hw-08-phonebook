@@ -17,33 +17,33 @@ const styles = {
 };
 
 const Navigation = () => {
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   return (
     <nav>
       <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
         Главная
       </NavLink>
 
-      {/* {isLoggedIn && (
+      {isLoggedIn && (
         <>
           <NavLink
-            to="/todos"
+            to="/contacts"
             exact
             style={styles.link}
             activeStyle={styles.activeLink}
           >
-            Заметки
+            Контакты
           </NavLink>
-          <NavLink
+          {/* <NavLink
             to="/upload"
             exact
             style={styles.link}
             activeStyle={styles.activeLink}
           >
             Загрузить
-          </NavLink>
+          </NavLink> */}
         </>
-      )} */}
+      )}
     </nav>
   );
 };

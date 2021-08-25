@@ -31,13 +31,13 @@ export default function App() {
                 <RegisterView />
               </PublicRoute>
 
-              <PublicRoute exact path="/login" redirectTo="/todos" restricted>
+              <PublicRoute exact path="/login" redirectTo="/contacts" restricted>
                 <LoginView />
               </PublicRoute>
 
-              {/* <PrivateRoute path="/todos" redirectTo="/login"> */}
-                {/* <ContactsView /> */}
-              {/* </PrivateRoute> */}
+              <PrivateRoute path="/contacts" redirectTo="/login">
+                <ContactsView />
+              </PrivateRoute>
               
               {/* <PrivateRoute path="/upload" redirectTo="/login">
                 <UploadView />

@@ -1,29 +1,30 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { /*useState,*/ useEffect } from "react";
+import { useDispatch /*, useSelector */ } from "react-redux";
 // import Container from '../components/Container';
-import ContactList from '../Comps/ContactList';
+import ContactForm from "../Comps/ContactForm/ContactForm";
+import ContactList from "../Comps/ContactList";
 // import TodoEditor from '../components/TodoEditor';
 // import Filter from '../components/TodoFilter';
 // import Stats from '../components/Stats';
 // import Modal from '../components/Modal';
 // import IconButton from '../components/IconButton';
 // import { ReactComponent as AddIcon } from '../icons/add.svg';
-// import { todosOperations, todosSelectors } from '../redux/todos';
+import { contactsOperations /*, contactsSelectors */ } from "../redux/contacts";
 
-const barStyles = {
-  display: 'flex',
-  alignItems: 'flex-end',
-  marginBottom: 20,
-};
+// const barStyles = {
+//   display: 'flex',
+//   alignItems: 'flex-end',
+//   marginBottom: 20,
+// };
 
-export default function TodosView(params) {
+export default function ContactsView(params) {
   const dispatch = useDispatch();
   // const isLoadingTodos = useSelector(todosSelectors.getLoading);
 
   // const [isModalOpen, setIsModalOpen] = useState(false);
   // const toggleModal = () => setIsModalOpen(state => !state);
 
-  // useEffect(() => dispatch(todosOperations.fetchTodos()), [dispatch]);
+  useEffect(() => dispatch(contactsOperations.fetchContacts()), [dispatch]);
 
   return (
     // <Container>
@@ -37,7 +38,7 @@ export default function TodosView(params) {
 
         {isLoadingTodos && <h1>Загружаем...</h1>}
       </div> */}
-
+      <ContactForm />
       <ContactList />
 
       {/* {isModalOpen && (
@@ -45,7 +46,7 @@ export default function TodosView(params) {
           <TodoEditor onSave={toggleModal} />
         </Modal>
       )} */}
-      </>
+    </>
     // </Container>
   );
 }

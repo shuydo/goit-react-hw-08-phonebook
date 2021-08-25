@@ -3,7 +3,9 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 // axios.defaults.baseURL = 'https://lpj-tasker.herokuapp.com';
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com/';
-// qweqwe qwerty@gmai.com 1234qaz
+// console.log(axios.defaults.baseURL)
+// qweqwe qwerty@gmai.com 1234qaz 
+// user456 user456@gmail.com user456
 
 const token = {
   set(token) {

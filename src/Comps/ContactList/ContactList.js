@@ -1,18 +1,29 @@
-import {
-  useFetchContactsQuery,
-  useDeleteContactMutation,
-} from "../../redux/slices/contacts";
-import { useSelector } from "react-redux";
+// import {
+//   useFetchContactsQuery,
+//   useDeleteContactMutation,
+// } from "../../redux/slices/contacts";
 
-const getFilterContacts = (contacts, filterQ) =>
-  contacts.filter(({ name }) =>
-    name.toLowerCase().includes(filterQ.toLowerCase())
-  );
+// import { useSelector } from "react-redux";
+
+// const getFilterContacts = (contacts, filterQ) =>
+//   contacts.filter(({ name }) =>
+//     name.toLowerCase().includes(filterQ.toLowerCase())
+//   );
+
+// import Todo from '../Todo';
+
+import { useSelector /*, useDispatch */ } from "react-redux";
+import {
+  /* contactsOperations, */ contactsSelectors,
+} from "../../redux/contacts";
 
 export default function ContactList() {
-  const { data: contacts, isFetching } = useFetchContactsQuery();
-  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation(); // console.log(data);
-  const filter = useSelector(state => state.filter);
+  // const dispatch = useDispatch();
+  const contacts = useSelector(contactsSelectors.getVisibleContacts);
+  // const { data: contacts, isFetching } = useFetchContactsQuery();
+  // const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation(); // console.log(data);
+
+  // const filter = useSelector(state => state.filter);
 
   // console.log("state.filter: ", filter);
   // let dBase = [];
@@ -23,7 +34,7 @@ export default function ContactList() {
 
   return (
     <>
-      {isFetching && <p>Loading...</p>}
+      {/* {isFetching && <p>Loading...</p>} */}
       {contacts && (
         <div>
           <h3>ContactList</h3>
@@ -35,9 +46,9 @@ export default function ContactList() {
                   <span>
                     {contact.name}: {contact.number + "  "}
                   </span>
-                  <button onClick={() => deleteContact(contact.id)}>
+                  {/* <button onClick={() => deleteContact(contact.id)}>
                     {isDeleting ? "Deleting..." : "Delete"}
-                  </button>
+                  </button> */}
                 </p>
               </li>
             ))}

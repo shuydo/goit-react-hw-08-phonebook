@@ -1,17 +1,22 @@
-import { useState } from "react";
-import { useCreateContactMutation } from "../../redux/slices/contacts";
+import { useState } from "react"; // import { useCreateContactMutation } from "../../redux/slices/contacts";
+import { useDispatch } from "react-redux";
+import contactsOperations from "../../redux/contacts/contacts-operations";
+
+// console.log(contactsOperations.addContact);
+// contactsOperations.addContact("qqq");
 
 const initState = { name: "", number: "" };
 
 export default function ContactForm() {
   const [form, setForm] = useState(initState);
-  const [createContact] = useCreateContactMutation();
-  const inputHandler = e =>
-    setForm({ ...form, [e.target.name]: e.target.value });
+  const dispatch = useDispatch();
+  // const [createContact] = useCreateContactMutation();
+
+  const inptHndlr = e => setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = e => {
     e.preventDefault();
-    createContact(form);
+    dispatch(contactsOperations.addContact(form));
     setForm(initState);
   };
 
@@ -25,7 +30,7 @@ export default function ContactForm() {
         title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
         required
         value={form.name}
-        onChange={inputHandler}
+        onChange={inptHndlr}
       />
 
       <h3>Number</h3>
@@ -36,7 +41,7 @@ export default function ContactForm() {
         title="Номер телефона должен состоять из цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
         required
         value={form.number}
-        onChange={inputHandler}
+        onChange={inptHndlr}
       />
       <br></br>
       <button type="submit">Add contact</button>
