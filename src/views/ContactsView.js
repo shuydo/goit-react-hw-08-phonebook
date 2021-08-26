@@ -1,52 +1,41 @@
-import { /*useState,*/ useEffect } from "react";
-import { useDispatch /*, useSelector */ } from "react-redux";
-// import Container from '../components/Container';
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import Container from '../Comps/Container';
 import ContactForm from "../Comps/ContactForm/ContactForm";
 import ContactList from "../Comps/ContactList";
-// import TodoEditor from '../components/TodoEditor';
-// import Filter from '../components/TodoFilter';
-// import Stats from '../components/Stats';
-// import Modal from '../components/Modal';
-// import IconButton from '../components/IconButton';
+// import Filter from '../Comps/ContactFilter';
+// import Modal from '../Comps/Modal';
+// import IconButton from '../Comps/IconButton';
 // import { ReactComponent as AddIcon } from '../icons/add.svg';
-import { contactsOperations /*, contactsSelectors */ } from "../redux/contacts";
-
+import { contactsOperations  } from "../redux/contacts";
 // const barStyles = {
 //   display: 'flex',
 //   alignItems: 'flex-end',
 //   marginBottom: 20,
 // };
 
-export default function ContactsView(params) {
+export default function ContactsView() {
   const dispatch = useDispatch();
-  // const isLoadingTodos = useSelector(todosSelectors.getLoading);
-
+  // const isLoading Contacts = useSelector(contactsSelectors.getLoading);
   // const [isModalOpen, setIsModalOpen] = useState(false);
   // const toggleModal = () => setIsModalOpen(state => !state);
-
   useEffect(() => dispatch(contactsOperations.fetchContacts()), [dispatch]);
 
   return (
-    // <Container>
+    <Container>
     <>
       {/* <div style={barStyles}>
         <Filter />
-        <Stats />
-        <IconButton onClick={toggleModal} aria-label="Добавить todo">
-          <AddIcon width="40" height="40" fill="#fff" />
-        </IconButton>
-
-        {isLoadingTodos && <h1>Загружаем...</h1>}
+        {isLoadingContacts && <h1>Загружаем...</h1>}
       </div> */}
       <ContactForm />
       <ContactList />
-
       {/* {isModalOpen && (
         <Modal onClose={toggleModal}>
-          <TodoEditor onSave={toggleModal} />
+          <ContactsEditor onSave={toggleModal} />
         </Modal>
       )} */}
     </>
-    // </Container>
+    </Container>
   );
 }

@@ -6,9 +6,6 @@ import {
   deleteContactRequest,
   deleteContactSuccess,
   deleteContactError,
-  // toggleCompletedRequest,
-  // toggleCompletedSuccess,
-  // toggleCompletedError,
   fetchContactsRequest,
   fetchContactsSuccess,
   fetchContactsError,
@@ -41,6 +38,8 @@ const addContact = newContact => async dispatch => {
 
 // DELETE @ /contacts/:id
 const deleteContact = contactId => dispatch => {
+  console.log("in deleteContact");
+
   dispatch(deleteContactRequest());
 
   axios
@@ -67,6 +66,5 @@ const contactsOperations = {
   fetchContacts,
   addContact,
   deleteContact,
-  // toggleCompleted,
 };
 export default contactsOperations;

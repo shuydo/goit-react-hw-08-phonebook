@@ -1,9 +1,7 @@
 import { createSelector } from "@reduxjs/toolkit";
 
 const getLoading = state => state.contacts.loading;
-
-const getFilter = state => state.contacts.filter;// alert("what");
-
+const getFilter = state => state.contacts.filter; 
 const getAllContacts = state => state.contacts.items;
 
 const getTotalContactCount = state => {
@@ -17,17 +15,6 @@ const getCompletedContactCount = createSelector([getAllContacts], contacts => {
     0
   );
 });
-
-// const getVisibleContacts = createSelector(
-//   [getAllContacts, getFilter],
-//   (contacts, filter) => {
-//     const normalizedFilter = filter.toLowerCase();
-//     return contacts.filter(({ description }) =>
-//       description.toLowerCase().includes(normalizedFilter)
-//     );
-//   }
-// );
-
 // M!
 export const getVisibleContacts = createSelector(
   [getFilter, getAllContacts],
@@ -37,12 +24,11 @@ export const getVisibleContacts = createSelector(
       .filter(
         ({ name, number }) =>
           name.toLowerCase().includes(normalizeFilter) ||
-          number.includes(normalizeFilter),
+          number.includes(normalizeFilter)
       )
       .sort((a, b) => a.name.localeCompare(b.name));
-  },
+  }
 );
-
 
 const contactsSelectors = {
   getLoading,
@@ -53,3 +39,12 @@ const contactsSelectors = {
 };
 
 export default contactsSelectors;
+// const getVisibleContacts = createSelector(
+//   [getAllContacts, getFilter],
+//   (contacts, filter) => {
+//     const normalizedFilter = filter.toLowerCase();
+//     return contacts.filter(({ description }) =>
+//       description.toLowerCase().includes(normalizedFilter)
+//     );
+//   }
+// );

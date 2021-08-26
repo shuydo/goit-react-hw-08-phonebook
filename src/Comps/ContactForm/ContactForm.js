@@ -1,16 +1,12 @@
-import { useState } from "react"; // import { useCreateContactMutation } from "../../redux/slices/contacts";
+import { useState } from "react"; 
 import { useDispatch } from "react-redux";
 import contactsOperations from "../../redux/contacts/contacts-operations";
-
-// console.log(contactsOperations.addContact);
-// contactsOperations.addContact("qqq");
 
 const initState = { name: "", number: "" };
 
 export default function ContactForm() {
   const [form, setForm] = useState(initState);
   const dispatch = useDispatch();
-  // const [createContact] = useCreateContactMutation();
 
   const inptHndlr = e => setForm({ ...form, [e.target.name]: e.target.value });
 
