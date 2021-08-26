@@ -16,10 +16,10 @@ const styles = {
 
 const HomeView = () => (
   <div style={styles.container}>
-    <h1 style={styles.title}>
-      Hello
+    <h2 style={styles.title}>
+      PhoneBook Web App
       {/* <span role="img" aria-label="Иконка приветствия">💁‍♀️</span> */}
-    </h1>
+    </h2>
   </div>
 );
 

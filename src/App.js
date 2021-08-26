@@ -1,7 +1,7 @@
 import { Suspense, lazy } from "react";
-import { Switch } from "react-router-dom";
+import { Switch, Redirect } from "react-router-dom";
 // import { Toaster } from "react-hot-toaster";
-import Container from './Comps/Container';
+import Container from "./Comps/Container";
 import AppBar from "./Comps/AppBar";
 import PrivateRoute from "./Comps/PrivateRoute";
 import PublicRoute from "./Comps/PublicRoute";
@@ -16,22 +16,24 @@ export default function App() {
     <Container>
       <AppBar />
       <Switch>
-        <Suspense fallback={<p>Загружаем...</p>}>
+        <Suspense fallback={<p>Loading...</p>}>
           <PublicRoute exact path="/">
             <HomeView />
           </PublicRoute>
 
-          <PublicRoute exact path="/register" restricted>
+          <PublicRoute path="/register" restricted>
             <RegisterView />
           </PublicRoute>
 
-          <PublicRoute exact path="/login" redirectTo="/contacts" restricted>
+          <PublicRoute path="/login" redirectTo="/contacts" restricted>
             <LoginView />
           </PublicRoute>
 
           <PrivateRoute path="/contacts" redirectTo="/login">
             <ContactsView />
           </PrivateRoute>
+
+          <Redirect to="/" />
         </Suspense>
       </Switch>
       {/* <Toaster position="top-right" /> */}

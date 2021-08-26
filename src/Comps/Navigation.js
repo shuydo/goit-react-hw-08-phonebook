@@ -21,7 +21,7 @@ const Navigation = () => {
   return (
     <nav>
       <NavLink to="/" exact style={styles.link} activeStyle={styles.activeLink}>
-        Main
+        Intro
       </NavLink>
 
       {isLoggedIn && (
