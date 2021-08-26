@@ -32,14 +32,10 @@ const addContact = newContact => async dispatch => {
     .post("/contacts", newContact)
     .then(({ data }) => dispatch(addContactSuccess(data)))
     .catch(error => dispatch(addContactError(error.message)));
-
-  console.log("after add axios");
 };
 
 // DELETE @ /contacts/:id
 const deleteContact = contactId => dispatch => {
-  console.log("in deleteContact");
-
   dispatch(deleteContactRequest());
 
   axios
@@ -47,20 +43,6 @@ const deleteContact = contactId => dispatch => {
     .then(() => dispatch(deleteContactSuccess(contactId)))
     .catch(error => dispatch(deleteContactError(error.message)));
 };
-
-// PATCH @ /contacts/:id
-// const toggleCompleted =
-//   ({ id, completed }) =>
-//   dispatch => {
-//     const update = { completed };
-
-//     dispatch(toggleCompletedRequest());
-
-//     axios
-//       .patch(`/contacts/${id}`, update)
-//       .then(({ data }) => dispatch(toggleCompletedSuccess(data)))
-//       .catch(error => dispatch(toggleCompletedError(error.message)));
-//   };
 
 const contactsOperations = {
   fetchContacts,
